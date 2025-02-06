@@ -98,6 +98,20 @@ class AgentOutput(TypedDict):
     
     
 def get_agent_evaluation(output:AgentOutput, llm:ChatGroq):
+    """
+Evaluate the agent's trajectory using a specified evaluator.
+
+This function utilizes the 'trajectory' evaluator to assess the agent's
+performance based on its output, input query, and intermediate steps.
+
+Parameters:
+    output (AgentOutput): A dictionary containing the agent's query, output,
+        and intermediate steps.
+    llm (ChatGroq): The language model used for evaluation.
+
+Returns:
+    The result of the evaluation process.
+"""
     evaluator = load_evaluator("trajectory", llm = llm)
     evaluation_result = evaluator.evaluate_agent_trajectory(
         prediction=output['output'],

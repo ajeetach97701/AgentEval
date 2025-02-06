@@ -17,6 +17,18 @@ from Agent.model import llm
 load_dotenv(find_dotenv())
 
 def offer_tool(query: str):
+    """
+Executes a tool to respond to queries related to offers, using a predefined context.
+The function processes the query through a series of transformations and evaluations,
+including a language model and a string parser, to generate a response. It also evaluates
+the quality of the response using a context evaluation function.
+
+Args:
+    query (str): The user query to be processed.
+
+Returns:
+    str: The response generated based on the query and context.
+"""
     context = docs
     print("====Color Tool====")
     print(f"------------{query}---------")
@@ -33,13 +45,25 @@ def offer_tool(query: str):
     res = chain.invoke({"query": query})
     
     evaluation_explanation, evaluation_score = chain_evaluate_output(query=query, retrieval_context= context, llm_output=res)
-    print("\n\n----------------------Chain Evaluation------")
-    print(evaluation_explanation ,"\n\n", evaluation_score)
-    print("--------------------------------------------")
+    print("\n\n----------------------Chain Evaluation------\n\n")
+    print("Evaluation Explanation ->",evaluation_explanation ,"\n\nEvaluation Score->", evaluation_score)
+    print("\n--------------------------------------------")
     return res
 
 def greetings_tool(query: str):
+    """
+Processes a greeting query using a language model and evaluates the response.
 
+This function takes a greeting query, processes it through a language model
+pipeline, and evaluates the output. It prints the evaluation results and 
+returns the processed response.
+
+Args:
+    query (str): The greeting query to be processed.
+
+Returns:
+    str: The processed response from the language model.
+"""
     print("====Greetings Tool====")
     print(f"------------{query}---------")
     color_prompt =ChatPromptTemplate.from_template(""" You are a good virtual assistant. Handle the greetings properly in a polite manner.
@@ -53,7 +77,15 @@ def greetings_tool(query: str):
     print(chain_eval)
     return res
 def lead_capture(query: str):
+    """
+Capture a lead based on the provided query.
 
+Parameters:
+    query (str): The query string used to capture the lead.
+
+Returns:
+    str: Confirmation message indicating successful lead capture.
+"""
     return "The Lead Has been captured Sucessfully."
 
 

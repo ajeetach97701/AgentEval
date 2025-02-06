@@ -22,7 +22,21 @@ from Agent.tools import *
 from eval_it import get_agent_evaluation
 
 def generate_response(query:str):
-    
+    """
+Generates a response for a given query using a tool-calling agent.
+
+This function creates a chat prompt template and initializes a tool-calling
+agent with specified tools. It then executes the agent to generate a response
+for the provided query. The function yields the generated response and performs
+an evaluation of the agent's trajectory, yielding the evaluation result.
+
+Args:
+    query (str): The input query for which a response is to be generated.
+
+Yields:
+    dict: The generated response from the agent.
+    dict: The evaluation result of the agent's trajectory.
+"""
     prompt_agent = ChatPromptTemplate.from_messages(
         [
             (

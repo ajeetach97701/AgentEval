@@ -5,6 +5,15 @@ import time
 
 
 def call_yield():
+    """
+Continuously prompts the user for a query, generates a response using the
+generate_response function, and evaluates the response.
+
+The function runs in a loop, allowing the user to input queries until 'exit'
+is typed. For each query, it measures the time taken to generate and evaluate
+the response, then prints the query, the generated response, the evaluation
+score, and the reasoning behind the score.
+"""
     while True:
 
         query = input("Enter your query below (or type 'exit' to quit):\n>> ")
@@ -16,7 +25,6 @@ def call_yield():
 
         generate_response_instance = generate_response(query=query)
         generated_response = next(generate_response_instance)
-        print(generated_response)
         print("\n\nQuery:", generated_response['query'])
         print("\n\nResponse:", generated_response['output'])
         
