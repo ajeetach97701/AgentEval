@@ -1,0 +1,10 @@
+LLMEval/
+test.ipynb
+raga.ipynb
+deepval_p2.upynb
+.deepeval-cache.json
+agent_tragetory.ipynb
+arize_ai.ipynb
+deepval_p2.ipynb
+ragas.ipynb
+__pycache__

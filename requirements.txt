@@ -1,0 +1,8 @@
+ipykernel
+deepeval
+ipywidgets
+langchain_groq
+langchain_ollama
+arize-phoenix 
+langchain-ollama
+litellm
