@@ -8,3 +8,4 @@ arize_ai.ipynb
 deepval_p2.ipynb
 ragas.ipynb
 __pycache__
+.env.env
