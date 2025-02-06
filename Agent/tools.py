@@ -43,9 +43,38 @@ Returns:
         'context': lambda x: context
     }) | color_prompt | llm | string_parser
     res = chain.invoke({"query": query})
-    
-    evaluation_explanation, evaluation_score = chain_evaluate_output(query=query, retrieval_context= context, llm_output=res)
+    print("--------------Chain Output\n")
+    res = """Membership details
+### Membership Details
+
+We offer several membership plans with the following pricing:
+
+1. **Auto-renewable Monthly Subscription**: 
+   - Price: **235 SAR**
+   - Registration Fee: **50 SAR**
+   - Note: This membership auto-renews, but you can cancel the auto-renewal and still use it for one month.
+
+2. **Two-Month Subscription (+ 1 Free Month)**: 
+   - Price: **450 SAR**
+   - Registration Fee: **50 SAR**
+
+3. **Six-Month Subscription**: 
+   - Price: **1,230 SAR**
+   - Registration Fee: **50 SAR**
+
+4. **Twelve-Month Subscription**: 
+   - Price: **1,960 SAR**
+   - Registration Fee: **50 SAR**
+
+### Additional Information
+- A **50 SAR registration fee** applies to all subscription types.
+- For the monthly membership, you will be charged for the first month along with the joining fee, and your payment card will be used for automatic monthly payments.
+- Ensure sufficient funds are available on your payment card for the scheduled payment date.
+
+If you have any more questions or need further assistance, feel free to ask!"""
+    print(res)
     print("\n\n----------------------Chain Evaluation------\n\n")
+    evaluation_explanation, evaluation_score = chain_evaluate_output(query=query, retrieval_context= context, llm_output=res)
     print("Evaluation Explanation ->",evaluation_explanation ,"\n\nEvaluation Score->", evaluation_score)
     print("\n--------------------------------------------")
     return res
@@ -92,7 +121,7 @@ Returns:
 colorTool = StructuredTool.from_function(
             name='offerTool',
             func=offer_tool,
-            description="A tool that responds to query related to offers in chrismas, new year and so on.",
+            description="A tool that responds to the query related to memberships, it's details, pricing and so on. ",
             args_schema=QueryInput,
             return_direct=True
         )

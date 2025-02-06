@@ -1,10 +1,11 @@
+from pydantic import BaseModel, Field
 from langchain.schema import Document
 
 
 # primary_colors_document = Document(
 #     page_content="""
 #     Primary Colors are colors that cannot be made by mixing other colors together. These colors are the building blocks for all other colors.
-    
+
 #     The primary colors are:
 #     - **Red**: A strong, warm color associated with energy, passion, and action.
 #     - **Blue**: A cool color associated with calmness, stability, and trust.
@@ -78,8 +79,6 @@ from langchain.schema import Document
 # docs = [primary_colors_document, secondary_colors_document, color_psychology_document, color_harmonies_document]
 
 
-
-
 from langchain.schema import Document
 
 # First Document object for the membership offer
@@ -148,6 +147,13 @@ document_2 = Document(
 
 
 docs = [document_1, document_2]
-from pydantic import BaseModel, Field
+
+docs = [Document(metadata={}, page_content='#Question :What are the MEMBERSHIP PLANS AND THEIR PRICE DETAILS ? Answer in english:\nThe membership/subsctiption details are as follows:\n1. Auto-renewable monthly subscription: priced at 235 SAR, with a registration fee of 50 SAR. Additional joining fees will be removed when it is renewed. Please note that this membership has auto-renew, but you can still use it for 1 month by cancelling the auto renewal. \n2. Two-month subscription (+ 1 free month): priced at 450 SAR\n3. Six-month subscription: priced at 1,230 SAR\n4. Twelve-month subscription: priced at 1,960 SAR\n5. 50 SAR registration fee is applied in all subscription type. Answer in Arabic:\nاشتراك شهري متجدد تلقائيًا: بسعر 235 ريال سعودي، مع رسوم تسجيل 50 ريال سعودي.\nاشتراك لمدة شهرين (+ شهر مجاني): بسعر 450 ريال سعودي، مع رسوم تسجيل 50 ريال سعودي.\nاشتراك لمدة 6 أشهر: بسعر 1230 ريال سعودي، مع رسوم تسجيل 50 ريال سعودي.\nاشتراك لمدة 12 شهرًا: بسعر 1960 ريال سعودي، مع رسوم تسجيل 50 ريال سعودي.'),
+ Document(metadata={}, page_content='#Question in English: HOW DOES MONTHLY MEMBERSHIP WORK? Question in Arabic: ماهي آلية عمل الإشتراك الشهري ؟ Answer in English : When you join, you will be charged for the first month along with a joining fee, which is subject to change. The payment card details you provide at the time of joining will be used for automatic monthly payments to maintain your ongoing subscription. It is important to ensure there are sufficient funds in your account on the scheduled payment date to cover the monthly membership fee. You can cancel your membership renewal through your account, but please note that this must be done at least 5 days before the expiration date. If a payment fails, your membership will be canceled, and you will no longer have access to the gym. To ensure a smooth experience at Activ Gym, please choose the correct payment card and make sure it is funded before the recurring payment date. Answer in Arabic : عند الانضمام الى أكتيف جيم ، سيتم تحصيل رسوم الشهر الأول منك ورسوم الانضمام (  بناء على العرض المتوفر )\nسيتم استخدام تفاصيل بطاقة الدفع التي ستسجلها عند انضمامك إلينا للدفع مقابل اشتراكك المستمر بطريقة شهرية. سنقوم بتحصيل مدفوعاتك الشهرية تلقائيًا بطريقة أوتوماتيكية، بحيث يمكنك الاستمرار في استخدام خدمات وصالات أكتيف جيم  بدون انقطاع للمدة التي تريدها\nتأكد من توفر قيمة التجديد في يوم التجديد لتغطية قيمة اشتراكك الشهري في أكتيف جيم\nبإمكانك ايضاف إلغاء التجديد التلقائي لاشتراكك من خلال الدخول على حسابك في الموقع الإلكتروني . (يجب التأكد من من الالغاء قبل 5 ايام من تاريخ نهاية الاشتراك) .\n في حال فشل الدفع عند التجديد التلقائي , سيتم ايقاف اشتراكك ولن يكون باستطاعتك الدخول إلى النادي وزيارتنا\nلتجنب حدوث ذلك والاستمتاع بتجربتك في أكتيف جيم , تأكد من وجود قيمة الاشتراك في بطاقتك قبل يوم التجديد التلقائي'),
+ Document(metadata={}, page_content="#Question : How can I join? Answer in English : Joining is simple! Just be sure you're over 18, fill in your details, choose the plan that suits you, and complete payment. Your membership will be activated immediately after you join. Answer in Arabic : يمكنك الانضمام إلى نادي أكتيف من خلال زيارة موقعنا الإلكتروني أو التطبيق الخاص بنا للتسجيل. يمكنك أيضًا زيارة النادي شخصيًا للتسجيل والحصول على مزيد من المعلومات حول الاشتراكات المتاحة. هل ترغبين في ترتيب زيارة لتجربة النادي قبل الانضمام؟"),
+ Document(metadata={}, page_content='#Question: What are terms and condition regarding fees and charges? Part 1:\nAll published membership fees or other charges inclusive of all types of taxes such as The tax registration number for ACTIV gyms is 3000096456620001 and this applies to all fees from ACTIV gyms applicable under these terms and conditions. The VAT is included in your invoice.\n \n\n"Payment" means the membership term subscription fee for ACTIV according to the option of purchased membership which is determined by the duration of the subscription when joining. Our memberships are in terms of 1, 3, 6 & 12 months and some of them are automatically renewed at the end of each term. In such a case, your card details will be saved securely for such automatic recurring payments. Payments are charged in full at the beginning of each term, upfront, and apart from cancellations in accordance with the terms. No partial fees will be refunded from the subscription fee unless you cancel within 24 hours of your membership commencement date in your first term, in accordance with the Ministry of Sports Consumer Protection guidelines for Sports and Gymnasiums. Monthly "Frequent payment" or "recurring payment" means the membership monthly fees as per the selected price option will be deducted monthly as agreed by clicking purchase this will continue until such time that this is canceled. If your monthly membership has been renewed, you can\'t ask to a refund it or cancel it under any circumstances. A "joining fee" will be charged upon becoming a member. The joining fee is a one-time non-refundable payment when you sign up and is applied to cover the initial management costs associated with setting up a new subscription and allowing you to receive two free introductory sessions with a trainer. During certain periods of special offers, for example, pre-opening, ACTIV management may choose, at its own discretion, to cancel or reduce joining fees. The recurring  membership will automatically renew on the membership expiry date. You cannot modify the renewal payment date, but we reserve the right to modify the payment date at our own discretion.'),
+ Document(metadata={}, page_content='#Question in English : WHAT MEMBERSHIP OPTIONS ARE AVAILABLE? Question in Arabic: ماهي انواع الاشتراكات المتوفرة ؟ Answer in English : We offer 2 types of memberships :\n1- Recurring with no commitment  available on monthly membership.\n2- Upfront payment with commitment available for 3 ,6 12 months. Answer in Arabic : نقدم في أكتيف جيم خيارات متنوعة من  الاشتراكات\n1- اشتراك  تلقائي التجديد  وبدن التزام  وحاليا يتوفر على باقة الشهرية\n2- اشتراك مقدم بالتزام لفترة زمنية ويتوفر على باقات ال3 و6 و12 شهر')]
+
 class QueryInput(BaseModel):
-    query: str =  Field(description="Query to be passed as an argument. Always use this")
+    query: str = Field(
+        description="Query to be passed as an argument. Always use this")
